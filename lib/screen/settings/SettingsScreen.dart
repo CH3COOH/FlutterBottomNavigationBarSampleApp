@@ -36,7 +36,7 @@ class SettingsScreen extends ConsumerWidget {
                     TextButton(
                       onPressed: () => _onTapLogoutButton(
                         () {
-                          context.goNamed("splash");
+                          context.goNamed("walkThrough");
                         },
                       ),
                       child: const Text('サインアウト'),

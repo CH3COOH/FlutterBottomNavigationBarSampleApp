@@ -32,7 +32,7 @@ final routerProvider = Provider(
         ),
         GoRoute(
           name: "walkThrough",
-          path: '/welcome/walkThrough',
+          path: '/welcome',
           pageBuilder: (context, state) => const NoTransitionPage(
             child: WalkThroughScreen(),
           ),
@@ -65,36 +65,36 @@ final routerProvider = Provider(
           builder: (context, state) => const Tab2DetailScreen(),
         ),
         ShellRoute(
-            navigatorKey: _shellNavigatorKey,
-            pageBuilder: (context, state, child) {
-              return CustomTransitionPage(
-                child: ScaffoldWithBottomNavBar(child: child),
-                transitionDuration: const Duration(milliseconds: 300),
-                transitionsBuilder:
-                    (context, animation, secondaryAnimation, child) =>
-                    FadeTransition(
-                      opacity: CurveTween(curve: Curves.easeInOutCirc)
-                          .animate(animation),
-                      child: child,
-                    ),
-              );
-            },
-            routes: [
-              GoRoute(
-                name: "tab1",
-                path: '/home/tab1',
-                pageBuilder: (context, state) => const NoTransitionPage(
-                  child: Tab1RootScreen(),
-                ),
+          navigatorKey: _shellNavigatorKey,
+          pageBuilder: (context, state, child) {
+            return CustomTransitionPage(
+              child: ScaffoldWithBottomNavBar(child: child),
+              transitionDuration: const Duration(milliseconds: 300),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(
+                opacity:
+                    CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+                child: child,
               ),
-              GoRoute(
-                name: "tab2",
-                path: '/home/tab2',
-                pageBuilder: (context, state) => const NoTransitionPage(
-                  child: Tab2RootScreen(),
-                ),
+            );
+          },
+          routes: [
+            GoRoute(
+              name: "tab1",
+              path: '/home/tab1',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: Tab1RootScreen(),
               ),
-            ],
+            ),
+            GoRoute(
+              name: "tab2",
+              path: '/home/tab2',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: Tab2RootScreen(),
+              ),
+            ),
+          ],
         ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
@@ -111,7 +111,7 @@ final routerProvider = Provider(
         final prefs = await SharedPreferences.getInstance();
         final isLogin = prefs.getBool("isLogin") ?? false;
         if (!isLogin) {
-          return '/welcome/login';
+          return state.subloc.contains("/welcome") ? null : '/welcome';
         }
         return null;
       }),
