@@ -46,7 +46,7 @@ class Tab1RootScreen extends ConsumerWidget {
                         context.pushNamed("tab1Detail");
                       },
                       child: const Text('タブ1の詳細へ遷移する'),
-                    )
+                    ),
                   ],
                 ),
               ),
