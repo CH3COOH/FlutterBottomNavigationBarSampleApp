@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Tab1DetailScreen extends ConsumerWidget {
-  const Tab1DetailScreen({Key? key}) : super(key: key);
+class Tab3DetailScreen extends ConsumerWidget {
+  const Tab3DetailScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,7 +15,7 @@ class Tab1DetailScreen extends ConsumerWidget {
         centerTitle: true,
         systemOverlayStyle: SystemUiOverlayStyle.light,
         title: const Text(
-          "タブ1の詳細",
+          "タブ3の詳細です！",
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
@@ -30,14 +30,8 @@ class Tab1DetailScreen extends ConsumerWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
-                  children: [
-                    const SizedBox(height: 80),
-                    TextButton(
-                      onPressed: () {
-                        context.pushNamed("tab3Detail");
-                      },
-                      child: const Text('タブ3の詳細へ遷移する'),
-                    ),
+                  children: const [
+                    SizedBox(height: 80),
                   ],
                 ),
               ),

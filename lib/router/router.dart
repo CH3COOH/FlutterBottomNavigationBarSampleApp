@@ -10,6 +10,7 @@ import '../screen/login/LoginScreen.dart';
 import '../screen/tab1_detail/Tab1DetailScreen.dart';
 import '../screen/tab2_detail/Tab2DetailScreen.dart';
 import '../screen/tab2_root/Tab2RootScreen.dart';
+import '../screen/tab3_detail/Tab3DetailScreen.dart';
 import '../screen/walk_through/WalkThroughScreen.dart';
 
 //final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
@@ -58,6 +59,12 @@ final routerProvider = Provider(
         name: "tab2Detail",
         path: '/home/tab2/detail',
         builder: (context, state) => const Tab2DetailScreen(),
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        name: "tab3Detail",
+        path: '/home/tab3_detail',
+        builder: (context, state) => const Tab3DetailScreen(),
       ),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
