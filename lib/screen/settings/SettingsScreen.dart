@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Tab3DetailScreen extends ConsumerWidget {
-  const Tab3DetailScreen({Key? key}) : super(key: key);
+class SettingsScreen extends ConsumerWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,7 +16,7 @@ class Tab3DetailScreen extends ConsumerWidget {
         centerTitle: true,
         systemOverlayStyle: SystemUiOverlayStyle.light,
         title: const Text(
-          "タブ3の詳細です！",
+          "Settings",
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
@@ -30,8 +31,15 @@ class Tab3DetailScreen extends ConsumerWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
-                  children: const [
-                    SizedBox(height: 80),
+                  children:  [
+                    const SizedBox(height: 80),
+                    TextButton(
+                      onPressed: () => _onTapLogoutButton(() {
+                          context.goNamed("splash");
+                        },
+                      ),
+                      child: const Text('サインアウト'),
+                    ),
                   ],
                 ),
               ),
@@ -40,5 +48,11 @@ class Tab3DetailScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  void _onTapLogoutButton(void Function() onSuccess) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('isLogin');
+    onSuccess();
   }
 }

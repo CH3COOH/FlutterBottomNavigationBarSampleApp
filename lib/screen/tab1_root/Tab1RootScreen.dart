@@ -24,16 +24,10 @@ class Tab1RootScreen extends ConsumerWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout),
-            // onPressed: () {
-            //   // TODO: サインアウト
-            //   context.pushReplacementNamed("splash");
-            // },
-            onPressed: () => _onTapLogoutButton(
-                  () {
-                context.goNamed("splash");
-              },
-            ),
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              context.goNamed("settings");
+            },
           ),
         ],
       ),
