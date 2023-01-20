@@ -51,11 +51,13 @@ final routerProvider = Provider(
         ),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         name: "tab1Detail",
         path: '/home/tab1/detail',
         builder: (context, state) => const Tab1DetailScreen(),
       ),
       GoRoute(
+//        parentNavigatorKey: _shellNavigatorKey,
         name: "tab2Detail",
         path: '/home/tab2/detail',
         builder: (context, state) => const Tab2DetailScreen(),

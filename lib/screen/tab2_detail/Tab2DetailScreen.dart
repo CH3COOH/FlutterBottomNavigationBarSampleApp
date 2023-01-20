@@ -32,12 +32,12 @@ class Tab2DetailScreen extends ConsumerWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 80),
-                    TextButton(
-                      onPressed: () {
-                        context.pushNamed("tab3Detail");
-                      },
-                      child: const Text('タブ3の詳細へ遷移する'),
-                    ),
+                    // TextButton(
+                    //   onPressed: () {
+                    //     context.pushNamed("tab3Detail");
+                    //   },
+                    //   child: const Text('タブ3の詳細へ遷移する'),
+                    // ),
                   ],
                 ),
               ),
