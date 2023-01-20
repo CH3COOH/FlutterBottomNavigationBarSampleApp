@@ -31,10 +31,11 @@ class SettingsScreen extends ConsumerWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
-                  children:  [
+                  children: [
                     const SizedBox(height: 80),
                     TextButton(
-                      onPressed: () => _onTapLogoutButton(() {
+                      onPressed: () => _onTapLogoutButton(
+                        () {
                           context.goNamed("splash");
                         },
                       ),

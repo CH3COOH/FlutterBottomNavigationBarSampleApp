@@ -24,7 +24,7 @@ class WalkThroughScreen extends ConsumerWidget {
                     const SizedBox(height: 80),
                     TextButton(
                       onPressed: () {
-                        context.pushReplacementNamed("login");
+                        context.goNamed("login");
                       },
                       child: const Text('ログインへ遷移する'),
                     )

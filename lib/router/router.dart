@@ -14,7 +14,6 @@ import '../screen/tab2_detail/Tab2DetailScreen.dart';
 import '../screen/tab2_root/Tab2RootScreen.dart';
 import '../screen/walk_through/WalkThroughScreen.dart';
 
-//final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -108,9 +107,7 @@ final routerProvider = Provider(
         ),
       ],
       redirect: (BuildContext context, GoRouterState state) async {
-
-        print("GoRouterState: ${state.location}, ${state.subloc}");
-
+//        print("redirect: ${state.location}, ${state.subloc}");
         final prefs = await SharedPreferences.getInstance();
         final isLogin = prefs.getBool("isLogin") ?? false;
         if (!isLogin) {

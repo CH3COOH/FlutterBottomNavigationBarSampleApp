@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Tab1RootScreen extends ConsumerWidget {
   const Tab1RootScreen({Key? key}) : super(key: key);
@@ -26,7 +25,7 @@ class Tab1RootScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              context.goNamed("settings");
+              context.pushNamed("settings");
             },
           ),
         ],
@@ -55,11 +54,5 @@ class Tab1RootScreen extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  void _onTapLogoutButton(void Function() onSuccess) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('isLogin');
-    onSuccess();
   }
 }
