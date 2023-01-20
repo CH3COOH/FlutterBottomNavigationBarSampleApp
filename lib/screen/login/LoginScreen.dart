@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -33,10 +34,11 @@ class LoginScreen extends ConsumerWidget {
                   children: [
                     const SizedBox(height: 80),
                     TextButton(
-                      onPressed: () {
-//                        context.pushReplacementNamed("tab1");
-                        context.goNamed("tab1");
-                      },
+                      onPressed: () => _onTapLoginButton(
+                        () {
+                          context.goNamed("tab1");
+                        },
+                      ),
                       child: const Text('ログインする'),
                     )
                   ],
@@ -47,5 +49,11 @@ class LoginScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  void _onTapLoginButton(void Function() onSuccess) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLogin', true);
+    onSuccess();
   }
 }
