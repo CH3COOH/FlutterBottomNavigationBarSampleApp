@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LoginScreen extends ConsumerWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class Tab2RootScreen extends ConsumerWidget {
+  const Tab2RootScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,7 +15,7 @@ class LoginScreen extends ConsumerWidget {
         centerTitle: true,
         systemOverlayStyle: SystemUiOverlayStyle.light,
         title: const Text(
-          "ログイン",
+          "タブ2のルート",
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
@@ -34,10 +34,9 @@ class LoginScreen extends ConsumerWidget {
                     const SizedBox(height: 80),
                     TextButton(
                       onPressed: () {
-//                        context.pushReplacementNamed("tab1");
-                        context.goNamed("tab1");
+                        context.pushNamed("tab2Detail");
                       },
-                      child: const Text('ログインする'),
+                      child: const Text('タブ2の詳細へ遷移する'),
                     )
                   ],
                 ),

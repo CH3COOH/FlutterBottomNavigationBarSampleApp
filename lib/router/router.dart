@@ -5,15 +5,21 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tab_bar_sample_app/screen/splash/SplashScreen.dart';
 import 'package:tab_bar_sample_app/screen/tab1_root/Tab1RootScreen.dart';
 
+import '../screen/home/ScaffoldWithBottomNavBar.dart';
 import '../screen/login/LoginScreen.dart';
 import '../screen/tab1_detail/Tab1DetailScreen.dart';
+import '../screen/tab2_detail/Tab2DetailScreen.dart';
+import '../screen/tab2_root/Tab2RootScreen.dart';
 import '../screen/walk_through/WalkThroughScreen.dart';
 
+//final _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell');
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final routerProvider = Provider(
   (ref) => GoRouter(
     debugLogDiagnostics: true,
+    navigatorKey: _rootNavigatorKey,
     initialLocation: '/',
     routes: [
       GoRoute(
@@ -44,15 +50,47 @@ final routerProvider = Provider(
         ),
       ),
       GoRoute(
-        name: "tab1",
-        path: '/home/tab1',
-        builder: (context, state) => const Tab1RootScreen(),
-      ),
-      GoRoute(
         name: "tab1Detail",
         path: '/home/tab1/detail',
         builder: (context, state) => const Tab1DetailScreen(),
       ),
+      GoRoute(
+        name: "tab2Detail",
+        path: '/home/tab2/detail',
+        builder: (context, state) => const Tab2DetailScreen(),
+      ),
+      ShellRoute(
+          navigatorKey: _shellNavigatorKey,
+          builder: (context, state, child) {
+            return ScaffoldWithBottomNavBar(child: child);
+          },
+          // pageBuilder: (context, state, child) => CustomTransitionPage(
+          //       child: const LoginScreen(),
+          //       transitionDuration: const Duration(milliseconds: 300),
+          //       transitionsBuilder:
+          //           (context, animation, secondaryAnimation, child) =>
+          //               FadeTransition(
+          //         opacity: CurveTween(curve: Curves.easeInOutCirc)
+          //             .animate(animation),
+          //         child: child,
+          //       ),
+          //     ),
+          routes: [
+            GoRoute(
+              name: "tab1",
+              path: '/home/tab1',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: Tab1RootScreen(),
+              ),
+            ),
+            GoRoute(
+              name: "tab2",
+              path: '/home/tab2',
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: Tab2RootScreen(),
+              ),
+            ),
+          ]),
     ],
   ),
 );
