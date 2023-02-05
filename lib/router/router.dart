@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tab_bar_sample_app/screen/settings_notification/SettingsNotificationScreen.dart';
 import 'package:tab_bar_sample_app/screen/splash/SplashScreen.dart';
 import 'package:tab_bar_sample_app/screen/tab1_root/Tab1RootScreen.dart';
 
@@ -104,6 +105,14 @@ final routerProvider = Provider(
             fullscreenDialog: true,
             child: SettingsScreen(),
           ),
+          routes: [
+            GoRoute(
+              parentNavigatorKey: _rootNavigatorKey,
+              name: "settingsNotification",
+              path: 'notification',
+              builder: (context, state) => const SettingsNotificationScreen(),
+            ),
+          ]
         ),
       ],
       redirect: (BuildContext context, GoRouterState state) async {

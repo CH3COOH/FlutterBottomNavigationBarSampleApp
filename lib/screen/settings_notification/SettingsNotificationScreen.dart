@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsScreen extends ConsumerWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+class SettingsNotificationScreen extends ConsumerWidget {
+  const SettingsNotificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,7 +16,7 @@ class SettingsScreen extends ConsumerWidget {
         centerTitle: true,
         systemOverlayStyle: SystemUiOverlayStyle.light,
         title: const Text(
-          "Settings",
+          "Notification",
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
@@ -34,13 +34,8 @@ class SettingsScreen extends ConsumerWidget {
                   children: [
                     const SizedBox(height: 80),
                     TextButton(
-                      onPressed: () => context.pushNamed("settingsNotification"),
-                      child: const Text('通知設定画面へ'),
-                    ),
-                    const SizedBox(height: 80),
-                    TextButton(
                       onPressed: () => _onTapLogoutButton(
-                        () {
+                            () {
                           context.goNamed("walkThrough");
                         },
                       ),
